@@ -1,7 +1,9 @@
 package pages;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -16,15 +18,19 @@ public class HomePage {
 	}
 	
 	@FindBy(name="StateId")
-	Select statesSelectBox;
+	WebElement states;
+	public Select statesSelectBox;
 	
 	@FindBy(name="DataType")
+	WebElement dataType;
 	Select crimeTypeSelectBox;
 	
 	@FindBy(name="YearStart")
+	WebElement yearStart;
 	Select startYearSelectBox;
 	
 	@FindBy(name="YearEnd")
+	WebElement yearEnd;
 	Select endYearSelectBox;
 	
 	@FindBy(name="NextPage")
@@ -42,11 +48,16 @@ public class HomePage {
 	@FindBy(xpath="//caption[contains(text(),'Estimated crime')]")
 	WebElement estimatedCrimeLabel;
 	
+	List<WebElement> estimatedCrimeLabelList;
+	
 	@FindBy(xpath="//th[@id='pcrime1']/b/font")
 	WebElement propertyCrimeLabel;
 	
 	@FindBy(xpath="//th[@id='larc']//font")
 	WebElement larcenyColumnLabel;
+	
+	@FindBy(xpath="//th[@id='burg']//font")
+	WebElement burgarlyColumnLabel;
 	
 	@FindBy(xpath="//th[@id='mvtheft']//font")
 	WebElement mvtTherfColumnLabel;
@@ -58,11 +69,42 @@ public class HomePage {
 	List<WebElement> crimeTablesList;
 	
 	
+	
+	public WebElement getGetTableButton() {
+		return getTableButton;
+	}
+	
+	public WebElement getMvtTherfColumnLabel() {
+		return mvtTherfColumnLabel;
+	}
+	public WebElement getLarcenyColumnLabel() {
+		return larcenyColumnLabel;
+	}
+	public WebElement getBulgarlyColumnLabel() {
+		return burgarlyColumnLabel;
+	}
+	
+	public List<String> getStateNameTexts(){
+		
+		List<WebElement> statesElement = Driver.getDriver().findElements(By.xpath("//caption[contains(text(),'Estimated crime')]"));
+		List<String> strStatesList = new ArrayList<String>();
+		for(WebElement el : statesElement) {
+			strStatesList.add(el.getText().substring(19));
+		}
+		return strStatesList;
+	}
+	
+	public String getStateFromEstimatedCrimeLabelText() {
+		String str = estimatedCrimeLabel.getText().substring(19);
+		return str;
+	}
+	
 	/** This method is used to select one or multiple states
 	 * @param index is an int varargs
 	 */
 	public void selectStateOrStatesByIndex(int...index) {
 		for(int i : index) {
+			statesSelectBox = new Select(states);
 			statesSelectBox.selectByIndex(i);
 			Page.sleep(2000);
 		}
@@ -74,6 +116,7 @@ public class HomePage {
 	 */
 	public void selectOneOrMoreVariableGroupsByIndex(int...index) { 
 		for(int i : index) {
+			crimeTypeSelectBox = new Select(dataType);
 			crimeTypeSelectBox.selectByIndex(i);
 			Page.sleep(2000);
 		}
@@ -84,6 +127,7 @@ public class HomePage {
 	 * @param index is an int varargs
 	 */
 	public void selectStartYear(int index) {
+		startYearSelectBox = new Select(yearStart);
 		startYearSelectBox.selectByIndex(index);
 	}
 	
@@ -92,6 +136,7 @@ public class HomePage {
 	 * @param index is an int varargs
 	 */
 	public void selectStartYear(String visibleText) {
+		startYearSelectBox = new Select(yearStart);
 		startYearSelectBox.selectByVisibleText(visibleText);
 	}
 	
@@ -100,7 +145,42 @@ public class HomePage {
 	 * @param index is an int varargs
 	 */
 	public void selectStartYearByValue(String value) {
-		
+		startYearSelectBox = new Select(yearStart);
 		startYearSelectBox.selectByValue(value);
 	}
+	
+	/**
+	 * This method is used to select start year by index
+	 * @param index is an int varargs
+	 */
+	public void selectEndYear(int index) {
+		endYearSelectBox = new Select(yearEnd);
+		endYearSelectBox.selectByIndex(index);
+	}
+	
+	/**
+	 * This method is used to select end year by visibleText
+	 * @param index is an int varargs
+	 */
+	public void selectEndYear(String visibleText) {
+		endYearSelectBox = new Select(yearEnd);
+		endYearSelectBox.selectByVisibleText(visibleText);
+	}
+	
+	public void selectAllStates() {
+		  for(int i = 0; i <52; i++) {
+			  selectStateOrStatesByIndex(i);
+		  }
+	}
+	
+	public List<String> convertWebElementsToString() {
+		List<WebElement> selectedOptions = statesSelectBox.getAllSelectedOptions();
+		List<String> strList = new ArrayList<String>();
+		for(WebElement wl : selectedOptions) {
+			strList.add(wl.getText());
+		}
+		return  strList;
+	}
+
+
 }

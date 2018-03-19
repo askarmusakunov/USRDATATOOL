@@ -25,13 +25,15 @@ public class PageActions {
 	}
 	
 	public static void waitUntilElementIsVisible(WebElement webElement) {
-
-		
+			
 	
 	}
 		
-	public static void verifyElementIsPresent(WebElement el) {
-		Assert.assertTrue(el.isDisplayed(),"Verify Element is present failed");
+	public static boolean IsElementPresent(WebElement el) {
+		if(el.isDisplayed())
+			return true;
+		else
+			return false;
 	}
 }
 

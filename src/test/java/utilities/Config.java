@@ -10,7 +10,7 @@ public class Config {
 	private static Properties configFile;
 	
 	static {
-		String path = "/Users/Karakol/Documents/eclipse-workspace/HomeDepot/src/test/resources/testData/configuration.properties";
+		String path = "./src/test/resources/testData/configurations.properties";
 		
 		try {
 			FileInputStream input = new FileInputStream(path);
