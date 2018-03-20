@@ -70,6 +70,7 @@ public class HomePage {
 	
 	
 	
+	
 	public WebElement getGetTableButton() {
 		return getTableButton;
 	}
@@ -106,7 +107,7 @@ public class HomePage {
 		for(int i : index) {
 			statesSelectBox = new Select(states);
 			statesSelectBox.selectByIndex(i);
-			Page.sleep(2000);
+	
 		}
 	}
 	
@@ -118,7 +119,7 @@ public class HomePage {
 		for(int i : index) {
 			crimeTypeSelectBox = new Select(dataType);
 			crimeTypeSelectBox.selectByIndex(i);
-			Page.sleep(2000);
+		
 		}
 	}
 	

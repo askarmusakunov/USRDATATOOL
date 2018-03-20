@@ -1,13 +1,9 @@
 package tests;
 
 import static utilities.Driver.getDriver;
-import static utilities.PageActions.IsElementPresent;
-import static utilities.PageActions.click;
+import static utilities.PageActions.*;
 
-import java.util.Collections;
-import java.util.List;
-
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.Alert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
@@ -40,12 +36,19 @@ public class TestRunner extends TestBase {
 	  homePage.selectOneOrMoreVariableGroupsByIndex(1);
 	  homePage.selectStartYear("2009");
 	  homePage.selectEndYear("2014");
+	  
+	  if(isAlertPresent()) {
+		  Alert alert = getDriver().switchTo().alert();
+		  alert.dismiss();
+	  }
+	  
 	  click(homePage.getGetTableButton());
 	  Assert.assertEquals("Alabama", homePage.getStateNameTexts().get(0));
 	  Assert.assertEquals("Colorado", homePage.getStateNameTexts().get(1));
 	  Assert.assertEquals("Indiana", homePage.getStateNameTexts().get(2));
 	  Assert.assertEquals("Maine", homePage.getStateNameTexts().get(3));
 	  Assert.assertEquals("Texas", homePage.getStateNameTexts().get(4));
+	
   }
   
   
@@ -55,6 +58,10 @@ public class TestRunner extends TestBase {
 	  homePage.selectAllStates();
 	  int i = homePage.statesSelectBox.getAllSelectedOptions().size();
 	  homePage.statesSelectBox.deselectByIndex(0);
+	  if(isAlertPresent()) {
+		  Alert alert = getDriver().switchTo().alert();
+		  alert.dismiss();
+	  }
 	  boolean sorted = Ordering.natural().isOrdered(homePage.convertWebElementsToString());
 	  Assert.assertEquals(52, i);
 	  Assert.assertTrue(sorted);

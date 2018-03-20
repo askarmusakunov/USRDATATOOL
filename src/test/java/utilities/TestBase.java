@@ -22,7 +22,7 @@ public class TestBase {
 	@AfterClass(alwaysRun=true)
 	public void tearDown() {
 		Page.sleep(15000);
-		Driver.closeDriver();
+		//Driver.closeDriver();
 	}
 	
 }
