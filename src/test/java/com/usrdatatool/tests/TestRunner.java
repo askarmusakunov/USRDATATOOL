@@ -49,7 +49,6 @@ public class TestRunner extends TestBase {
 	  Assert.assertEquals("Indiana", homePage.getStateNameTexts().get(2));
 	  Assert.assertEquals("Maine", homePage.getStateNameTexts().get(3));
 	  Assert.assertEquals("Texas", homePage.getStateNameTexts().get(4));
-	
   }
   
   

@@ -9,7 +9,9 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
+import com.usrdatatool.utilities.Config;
 import com.usrdatatool.utilities.Driver;
+import static com.usrdatatool.utilities.PageActions.*;
 
 
 public class HomePage {
@@ -74,12 +76,30 @@ public class HomePage {
 	@FindBy(xpath="//div/a/strong[contains(text(),'table-building')]")
 	WebElement buildingToolLink;
 	
-	@FindBy(xpath="//a/strong[contains(text(),'states')]")
+	@FindBy(xpath="//strong[contains(text(),'states and U.S.')]/..")
 	WebElement allStatesLink;
+	
+	@FindBy(xpath="//strong[contains(text(),'Agencies')]/..")
+	WebElement agenciesLink;
+	
+	@FindBy(xpath="//strong[contains(text(),'Larger')]/..")
+	WebElement largerAgenciesLink;
 	
 	@FindBy(xpath="//blockquote/table[@class='tblMain']")
 	WebElement mainTable;
 	
+	@FindBy(xpath="//font[contains(text(),'State')]/..")
+	WebElement stateByStateLink;
+	
+	@FindBy(xpath="//a[.='Data with one variable']")
+	WebElement dataVariableLink;
+	
+	@FindBy(xpath="//a[contains(.,'One')]")
+	WebElement oneYearDataLink;
+	
+	public WebElement getStateByStateLink() {
+		return stateByStateLink;
+	}
 	public WebElement getMainTable() {
 		return mainTable;
 	}
@@ -112,6 +132,48 @@ public class HomePage {
 		return strStatesList;
 	}
 	
+	public boolean areTableTypeLinksValid() {
+		if(!IsElementPresent(mainTable)) {
+			System.err.println("Tables are not displayed");
+			return false;
+		}
+		if(!IsElementPresent(stateByStateLink) & !isElementClickable(stateByStateLink)
+				& !isLinkNavToRightPage(stateByStateLink, Config.getProperty("stateCrimeURL"))) {
+			System.err.println("State By State Link( Not present, not clickable or navigating to wrong page");
+			return false;
+		}
+		if(!IsElementPresent(dataVariableLink) & !isElementClickable(dataVariableLink)
+				& !isLinkNavToRightPage(dataVariableLink, Config.getProperty("dataVariableURL"))) {
+			System.err.println("Data by one variable Link( Not present, not clickable or navigating to wrong page");
+			return false;
+		}
+		if(!IsElementPresent(oneYearDataLink) & !isElementClickable(oneYearDataLink)
+				& !isLinkNavToRightPage(oneYearDataLink, Config.getProperty("oneYearDataURL"))) {
+			System.err.println("One year data Link( Not present, not clickable or navigating to wrong page");
+			return false;
+		}
+		
+		return true;
+	}
+	
+	/**
+	 *  This method is used to check if links are displayed on the page
+	 */
+	public boolean areReportLinksDisplayed() {
+		if(!IsElementPresent(allStatesLink)) {
+			System.err.println("all States Link is not displayed");
+			return false;
+		}
+		else if(!IsElementPresent(agenciesLink)) {
+			System.err.println("Agencies Link is not displayed");
+			return false;
+		}
+		else if(!IsElementPresent(largerAgenciesLink)) {
+			System.err.println("Larger agencies link is not displayed");
+			return false;
+		}
+		return true;
+	}
 	public String getStateFromEstimatedCrimeLabelText() {
 		String str = estimatedCrimeLabel.getText().substring(19);
 		return str;

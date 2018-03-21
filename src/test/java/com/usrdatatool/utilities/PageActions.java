@@ -5,6 +5,8 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.elementToBeClick
 
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class PageActions {
@@ -17,8 +19,30 @@ public class PageActions {
 		webElement.click();
 	}
 	
-		
+	public static boolean isElementClickable(WebElement el) {
+		try {
+			el = wait.until(ExpectedConditions.elementToBeClickable(el));
+			return true;
+		}
+		catch(Exception e) {
+			e.getMessage();
+			return false;
+		}
+	}
+	public static boolean isLinkNavToRightPage(WebElement el, String url) {
+		click(el);
+		Page.sleep(2000);
+		boolean bool = Driver.getDriver().getCurrentUrl().equals(url);
+		Driver.getDriver().navigate().back();
+		if(!bool) {
+			System.err.println("Wrong page or URL");
+			return false;
+		}
+		return true;
+	}
+	
 	public static boolean IsElementPresent(WebElement el) {
+		el = wait.until(ExpectedConditions.visibilityOf(el));
 		if(el.isDisplayed())
 			return true;
 		else
