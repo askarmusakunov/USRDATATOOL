@@ -1,13 +1,13 @@
-package pages;
+package com.usrdatatool.pages;
+
+import static com.usrdatatool.utilities.Driver.getDriver;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import utilities.Driver;
-
-import static utilities.Driver.getDriver;
+import com.usrdatatool.utilities.Driver;
 
 public class ContactUs {
 

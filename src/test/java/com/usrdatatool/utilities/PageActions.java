@@ -1,4 +1,4 @@
-package utilities;
+package com.usrdatatool.utilities;
 
 
 import static org.openqa.selenium.support.ui.ExpectedConditions.elementToBeClickable;
@@ -8,6 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class PageActions {
+	
 	private static WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 20);
 
 	public static void click(WebElement webElement) {
@@ -16,10 +17,6 @@ public class PageActions {
 		webElement.click();
 	}
 	
-	public static void waitUntilElementIsVisible(WebElement webElement) {
-			
-	
-	}
 		
 	public static boolean IsElementPresent(WebElement el) {
 		if(el.isDisplayed())

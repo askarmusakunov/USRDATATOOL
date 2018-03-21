@@ -1,4 +1,4 @@
-package pages;
+package com.usrdatatool.pages;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,13 +9,16 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
-import utilities.Driver;
-import utilities.Page;
+import com.usrdatatool.utilities.Driver;
+
 
 public class HomePage {
 	public HomePage() {
 		PageFactory.initElements(Driver.getDriver(), this);
 	}
+	
+	@FindBy(xpath="//img[@alt='FBI kiosk banner']")
+	WebElement banner;
 	
 	@FindBy(name="StateId")
 	WebElement states;
@@ -68,13 +71,27 @@ public class HomePage {
 	@FindBy(xpath="//table[contains(@title,'state level')]")
 	List<WebElement> crimeTablesList;
 	
+	@FindBy(xpath="//div/a/strong[contains(text(),'table-building')]")
+	WebElement buildingToolLink;
 	
+	@FindBy(xpath="//a/strong[contains(text(),'states')]")
+	WebElement allStatesLink;
 	
+	@FindBy(xpath="//blockquote/table[@class='tblMain']")
+	WebElement mainTable;
 	
+	public WebElement getMainTable() {
+		return mainTable;
+	}
+	public WebElement getAllStatesLink() {
+		return allStatesLink;
+	}
 	public WebElement getGetTableButton() {
 		return getTableButton;
 	}
-	
+	public WebElement getBuildingToolLink() {
+		return buildingToolLink;
+	}
 	public WebElement getMvtTherfColumnLabel() {
 		return mvtTherfColumnLabel;
 	}
@@ -107,7 +124,6 @@ public class HomePage {
 		for(int i : index) {
 			statesSelectBox = new Select(states);
 			statesSelectBox.selectByIndex(i);
-	
 		}
 	}
 	
@@ -166,6 +182,10 @@ public class HomePage {
 	public void selectEndYear(String visibleText) {
 		endYearSelectBox = new Select(yearEnd);
 		endYearSelectBox.selectByVisibleText(visibleText);
+	}
+	
+	public boolean isLogoDisplayed() {
+		return banner.isDisplayed();
 	}
 	
 	public void selectAllStates() {

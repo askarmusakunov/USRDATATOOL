@@ -1,4 +1,4 @@
-package utilities;
+package com.usrdatatool.utilities;
 
 import org.junit.Assert;
 import org.openqa.selenium.WebElement;

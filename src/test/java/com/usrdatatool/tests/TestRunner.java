@@ -1,17 +1,17 @@
-package tests;
+package com.usrdatatool.tests;
 
-import static utilities.Driver.getDriver;
-import static utilities.PageActions.*;
+import static com.usrdatatool.utilities.Driver.getDriver;
+import static com.usrdatatool.utilities.PageActions.*;
 
 import org.openqa.selenium.Alert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
 import com.google.common.collect.Ordering;
+import com.usrdatatool.utilities.Config;
+import com.usrdatatool.utilities.TestBase;
 
 import junit.framework.Assert;
-import utilities.Config;
-import utilities.TestBase;
 
 public class TestRunner extends TestBase {
 
@@ -28,6 +28,7 @@ public class TestRunner extends TestBase {
 	  Assert.assertTrue("larceny coloumn is not present",IsElementPresent(homePage.getLarcenyColumnLabel()));
 	  Assert.assertTrue("motor vehicle coloumn is not present",IsElementPresent(homePage.getMvtTherfColumnLabel()));
   }
+  
   
   @Test
   public void test2() {
@@ -55,23 +56,20 @@ public class TestRunner extends TestBase {
   @Test
   public void test3() {
 	  getDriver().get(Config.getProperty("baseUrl"));
-	  homePage.selectAllStates();
-	  int i = homePage.statesSelectBox.getAllSelectedOptions().size();
-	  homePage.statesSelectBox.deselectByIndex(0);
 	  if(isAlertPresent()) {
 		  Alert alert = getDriver().switchTo().alert();
 		  alert.dismiss();
 	  }
+	  homePage.selectAllStates();
+	  int i = homePage.statesSelectBox.getAllSelectedOptions().size();
+	  homePage.statesSelectBox.deselectByIndex(0);
+
 	  boolean sorted = Ordering.natural().isOrdered(homePage.convertWebElementsToString());
 	  Assert.assertEquals(52, i);
 	  Assert.assertTrue(sorted);
 	  
   }
   
-  @AfterMethod()
-  public void afterMethod() {
-	  
-  }
 
 
 

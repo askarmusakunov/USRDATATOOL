@@ -1,4 +1,4 @@
-package pages;
+package com.usrdatatool.pages;
 
 public class EstimatedCrime {
 	EstimatedCrime (){

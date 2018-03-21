@@ -1,13 +1,13 @@
-package utilities;
+package com.usrdatatool.utilities;
 
-import static utilities.Driver.getDriver;
+import static com.usrdatatool.utilities.Driver.getDriver;
 
 import java.util.concurrent.TimeUnit;
 
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
-import pages.HomePage;
+import com.usrdatatool.pages.HomePage;
 public class TestBase {
 	
 	protected HomePage homePage;
@@ -22,7 +22,7 @@ public class TestBase {
 	@AfterClass(alwaysRun=true)
 	public void tearDown() {
 		Page.sleep(15000);
-		//Driver.closeDriver();
+		Driver.closeDriver();
 	}
 	
 }
