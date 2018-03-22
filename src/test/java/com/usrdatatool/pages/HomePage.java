@@ -264,6 +264,9 @@ public class HomePage {
 		}
 		return  strList;
 	}
+	public WebElement oneYearDataLink() {
+		return oneYearDataLink;
+	}
 
 
 }
