@@ -3,13 +3,13 @@
 <suite name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="com.usrdatatool.tests.SmokeTestSuiteRunner">
+      <class name="com.usrdatatool.tests.TestRunner">
         <methods>
+          <include name="test_TC110"/>
           <include name="setUP"/>
           <include name="tearDown"/>
-          <include name="smokeTest"/>
         </methods>
-      </class> <!-- com.usrdatatool.tests.SmokeTestSuiteRunner -->
+      </class> <!-- com.usrdatatool.tests.TestRunner -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

@@ -81,21 +81,55 @@ public class HomePage {
 	
 	@FindBy(xpath="//strong[contains(text(),'Agencies')]/..")
 	WebElement agenciesLink;
-	
+
 	@FindBy(xpath="//strong[contains(text(),'Larger')]/..")
 	WebElement largerAgenciesLink;
 	
-	@FindBy(xpath="//blockquote/table[@class='tblMain']")
-	WebElement mainTable;
 	
+	@FindBy(xpath="//blockquote/table[@class='tblMain']")
+	WebElement mainTable;	
+
 	@FindBy(xpath="//font[contains(text(),'State')]/..")
 	WebElement stateByStateLink;
 	
 	@FindBy(xpath="//a[.='Data with one variable']")
 	WebElement dataVariableLink;
 	
+	
 	@FindBy(xpath="//a[contains(.,'One')]")
 	WebElement oneYearDataLink;
+	
+	
+	@FindBy(xpath="//h1[contains(., 'Welcome to a new way to access UCR statistics')]")
+	WebElement homePageHeader;
+	
+	
+	
+	public WebElement getLargerAgenciesLink() {
+		return largerAgenciesLink;
+	}
+
+	
+	public WebElement oneYearDataLink() {
+		return oneYearDataLink;
+	}
+	
+	public WebElement getDataVariableLink() {
+		return dataVariableLink;
+	}
+	
+
+	public WebElement getOneYearDataLink() {
+		return oneYearDataLink;
+	}
+	
+	public WebElement getAgenciesLink() {
+		return agenciesLink;
+	}
+	
+	public WebElement gethomePageHeader() {
+		return homePageHeader;
+	}
 	
 	public WebElement getStateByStateLink() {
 		return stateByStateLink;
@@ -174,6 +208,7 @@ public class HomePage {
 		}
 		return true;
 	}
+	
 	public String getStateFromEstimatedCrimeLabelText() {
 		String str = estimatedCrimeLabel.getText().substring(19);
 		return str;
@@ -264,9 +299,7 @@ public class HomePage {
 		}
 		return  strList;
 	}
-	public WebElement oneYearDataLink() {
-		return oneYearDataLink;
-	}
+	
 
 
 }

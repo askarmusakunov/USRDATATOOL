@@ -31,65 +31,14 @@ div.shootout {padding:2em;border:3px #4854A8 solid}
 <body>
 <table cellspacing="0" cellpadding="0" class="result">
 <tr><th>Test</th><th class="numi">Methods<br/>Passed</th><th class="numi">Scenarios<br/>Passed</th><th class="numi"># skipped</th><th class="numi"># failed</th><th class="numi">Total<br/>Time</th><th class="numi">Included<br/>Groups</th><th class="numi">Excluded<br/>Groups</th></tr>
-<tr><td style="text-align:left;padding-right:2em">Default test</td><td class="numi">2</td><td class="numi">2</td><td class="numi">0</td><td class="numi_attn">2</td><td class="numi">40.2 seconds</td><td class="numi"></td><td class="numi"></td></tr>
+<tr><td style="text-align:left;padding-right:2em">Default test</td><td class="numi">1</td><td class="numi">1</td><td class="numi">0</td><td class="numi">0</td><td class="numi">66.2 seconds</td><td class="numi"></td><td class="numi"></td></tr>
 </table>
 <table cellspacing="0" cellpadding="0" class="passed" id="summary">
 <tr><th>Class</th><th>Method</th><th># of<br/>Scenarios</th><th>Start</th><th>Time<br/>(ms)</th></tr>
-<tr><th colspan="4">Default test &#8212; failed</th></tr>
-<tr class="failedodd"><td rowspan="2">com.usrdatatool.tests.TestRunner</td><td><a href="#m1"><b>test1</b>  </a></td><td class="numi">1</td><td>1521755529244</td><td class="numi">2194</td></tr><tr class="failedodd"><td><a href="#m2"><b>test2</b>  </a></td><td class="numi">1</td><td>1521755531440</td><td class="numi">2142</td></tr>
 <tr><th colspan="4">Default test &#8212; passed</th></tr>
-<tr class="passedodd"><td rowspan="2">com.usrdatatool.tests.TestRunner</td><td><a href="#m3"><b>test3</b>  </a></td><td class="numi">1</td><td>1521755533585</td><td class="numi">14620</td></tr><tr class="passedodd"><td><a href="#m4"><b>test4</b>  </a></td><td class="numi">1</td><td>1521755548206</td><td class="numi">3509</td></tr>
+<tr class="passedodd"><td rowspan="1">com.usrdatatool.tests.TestRunner</td><td><a href="#m1"><b>test_TC110</b>  </a></td><td class="numi">1</td><td>1522010190986</td><td class="numi">52144</td></tr>
 </table>
 <h1>Default test</h1>
-<h2 id="m1">com.usrdatatool.tests.TestRunner:test2</h2>
-<div style="padding-left:3em">
-<p>unknown error: Element &lt;input name=&quot;NextPage&quot; type=&quot;submit&quot; value=&quot;Get Table&quot;&gt; is not clickable at point (76, 449). Other element would receive the click: &lt;div class=&quot;acsModalBackdrop acsAbandonButton&quot; data-isbackdrop=&quot;true&quot;&gt;...&lt;/div&gt;
-  (Session info: chrome=65.0.3325.181)
-  (Driver info: chromedriver=2.37.543654 (a46b62e9900f5ac48951f8ad68d9e03eded4cc8d),platform=Mac OS X 10.12.6 x86_64) (WARNING: The server did not provide any stacktrace information)
-Command duration or timeout: 0 milliseconds
-Build info: version: &apos;3.6.0&apos;, revision: &apos;6fbf3ec767&apos;, time: &apos;2017-09-27T15:28:36.4Z&apos;
-System info: host: &apos;Beishembeks-MacBook-Pro.local&apos;, ip: &apos;2601:246:4e01:af1d:7474:1fb7:e616:dd96&apos;, os.name: &apos;Mac OS X&apos;, os.arch: &apos;x86_64&apos;, os.version: &apos;10.12.6&apos;, java.version: &apos;1.8.0_151&apos;
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities [{mobileEmulationEnabled=false, hasTouchScreen=false, platform=MAC, acceptSslCerts=false, acceptInsecureCerts=false, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, platformName=MAC, setWindowRect=true, unexpectedAlertBehaviour=, applicationCacheEnabled=false, rotatable=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.37.543654 (a46b62e9900f5ac48951f8ad68d9e03eded4cc8d), userDataDir=/var/folders/1p/4zvsm4fx4z70cs2jyqtbsdf40000gn/T/.org.chromium.Chromium.BRZCKZ}, takesHeapSnapshot=true, pageLoadStrategy=normal, unhandledPromptBehavior=, databaseEnabled=false, handlesAlerts=true, version=65.0.3325.181, browserConnectionEnabled=false, nativeEvents=true, locationContextEnabled=true, cssSelectorsEnabled=true}]
-Session ID: 73a4213d47ccc91792516eeb7c991456</p>
-sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-<br/>at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
-<br/>at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-<br/>at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
-<br/>at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:214)
-<br/>at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:166)
-<br/>at org.openqa.selenium.remote.http.JsonHttpResponseCodec.reconstructValue(JsonHttpResponseCodec.java:40)
-<br/>at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:82)
-<br/>at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:45)
-<br/>at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:164)
-<br/>at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
-<br/>at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:586)
-<br/>at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:279)
-<br/>at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:83)
-<br/>at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-<br/>at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-<br/>at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-<br/>at java.lang.reflect.Method.invoke(Method.java:498)
-<br/>at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:51)
-<br/>at com.sun.proxy.$Proxy9.click(Unknown Source)
-<br/>at com.usrdatatool.utilities.PageActions.click(PageActions.java:19)
-<br/>at com.usrdatatool.tests.TestRunner.test2(TestRunner.java:49)
-<br/>25 lines not shown
-</div>
-<p class="totop"><a href="#summary">back to summary</a></p>
-<h2 id="m2">com.usrdatatool.tests.TestRunner:test1</h2>
-<div style="padding-left:3em">
-<p>expected [true] but found [bulgarly coloumn is not present]</p>
-org.testng.Assert.fail(Assert.java:94)
-<br/>at org.testng.Assert.failNotEquals(Assert.java:494)
-<br/>at org.testng.Assert.assertEquals(Assert.java:123)
-<br/>at org.testng.Assert.assertEquals(Assert.java:165)
-<br/>at com.usrdatatool.tests.TestRunner.test1(TestRunner.java:30)
-<br/>25 lines not shown
-</div>
-<p class="totop"><a href="#summary">back to summary</a></p>
-<h2 id="m3">com.usrdatatool.tests.TestRunner:test3</h2>
-<p class="totop"><a href="#summary">back to summary</a></p>
-<h2 id="m4">com.usrdatatool.tests.TestRunner:test4</h2>
+<h2 id="m1">com.usrdatatool.tests.TestRunner:test_TC110</h2>
 <p class="totop"><a href="#summary">back to summary</a></p>
 </body></html>
