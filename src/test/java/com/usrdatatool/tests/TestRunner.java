@@ -260,7 +260,7 @@ public class TestRunner extends TestBase {
 	  Assert.assertTrue(homePage.comparePopulation());
 
   }
-  //@Test
+  @Test
   public void test_109() {
 	  getDriver().get(Config.getProperty("url109"));
 	  reportedCrimePage.handlepopUp();	
