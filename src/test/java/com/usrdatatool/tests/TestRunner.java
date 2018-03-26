@@ -1,12 +1,19 @@
 package com.usrdatatool.tests;
 
 import static com.usrdatatool.utilities.Driver.getDriver;
-import static com.usrdatatool.utilities.PageActions.*;
+import static com.usrdatatool.utilities.PageActions.IsElementPresent;
+import static com.usrdatatool.utilities.PageActions.click;
+import static com.usrdatatool.utilities.PageActions.isAlertPresent;
 import static org.testng.Assert.assertTrue;
 
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
+
 import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
 import com.google.common.collect.Ordering;
@@ -14,6 +21,8 @@ import com.usrdatatool.utilities.Config;
 import com.usrdatatool.utilities.Driver;
 import com.usrdatatool.utilities.PageActions;
 import com.usrdatatool.utilities.TestBase;
+
+
 
 public class TestRunner extends TestBase {
 
@@ -39,12 +48,6 @@ public class TestRunner extends TestBase {
 		homePage.selectOneOrMoreVariableGroupsByIndex(1);
 		homePage.selectStartYear("2009");
 		homePage.selectEndYear("2014");
-
-		if (isAlertPresent()) {
-			Alert alert = getDriver().switchTo().alert();
-			alert.dismiss();
-		}
-
 		click(homePage.getGetTableButton());
 		Assert.assertEquals("Alabama", homePage.getStateNameTexts().get(0));
 		Assert.assertEquals("Colorado", homePage.getStateNameTexts().get(1));
@@ -127,7 +130,10 @@ public class TestRunner extends TestBase {
 		click(homePage.getGetTableButton());
 		// Step 5- Selecting year 2016 is not possible, because max year is 2014
 
-	}
+	}	
+
+
+	
 
 	//@Test
 	public void test_TC111() {
@@ -192,5 +198,89 @@ public class TestRunner extends TestBase {
 		Assert.assertEquals(homePage.endYearSelectBox.getFirstSelectedOption().getText().trim(), "2014");
 
 	}
+
+    
+ // @Test
+  public void test_107(){
+	  getDriver().get(Config.getProperty("oneYearDataLocal"));
+	  Assert.assertEquals(getDriver().getTitle(), "Uniform Crime Reporting Statistics");
+	  reportedCrimePage.handlepopUp(); //hadle popUp from ReportedCrimePage
+	  homePage.selectStateOrStatesByIndex(9);
+//	  localOneYearData.getGroupId("Cities from 50,000 thru 99,999");
+	  WebElement elem = Driver.getDriver().findElement(By.xpath("//select[@name='BJSPopulationGroupId']//option[@value='5']"));
+	  click(homePage.getGetTableButton());
+	  reportedCrimePage.handlepopUp();
+	  //not finish
+	  
+  }
+  
+  //@Test
+  public void test_108() {
+	  getDriver().get(Config.getProperty("oneYearDataLocal"));
+	  Assert.assertEquals(getDriver().getTitle(), "Uniform Crime Reporting Statistics");
+	  reportedCrimePage.handlepopUp(); //hadle popUp from ReportedCrimePage
+	  homePage.selectStateOrStatesByIndex(32);
+	  WebElement elem1 = Driver.getDriver().findElement(By.xpath("//select[@name='BJSPopulationGroupId']//option[@value='5']"));
+	  WebElement elem2 = Driver.getDriver().findElement(By.xpath("//select[@name='BJSPopulationGroupId']//option[@value='4']"));
+	
+	  Robot robot = null;
+	  try {
+		robot = new Robot();
+	} catch (AWTException e) {
+	}
+	  robot.keyPress(KeyEvent.VK_META);
+	  elem1.click();
+	  elem2.click();
+	  robot.keyRelease(KeyEvent.VK_META);
+	  
+	  
+	  click(homePage.getGetTableButton());
+	  reportedCrimePage.handlepopUp();
+	  WebElement elem4 = Driver.getDriver().findElement(By.xpath("//select[@name='CrimeCrossId']//option[@value='13307']"));
+	  WebElement elem5 = Driver.getDriver().findElement(By.xpath("//select[@name='CrimeCrossId']//option[@value='13987']"));
+	  WebElement elem6 = Driver.getDriver().findElement(By.xpath("//select[@name='CrimeCrossId']//option[@value='14155']"));
+	  robot.keyPress(KeyEvent.VK_META);
+	  elem4.click();
+	  elem5.click();
+	  elem6.click();
+	  robot.keyRelease(KeyEvent.VK_META);
+	  
+	  WebElement elem7 = Driver.getDriver().findElement(By.xpath("//select[@name='DataType']//option[@value='1']"));
+	  WebElement elem8 = Driver.getDriver().findElement(By.xpath("//select[@name='DataType']//option[@value='2']"));
+	  robot.keyPress(KeyEvent.VK_META);
+	  elem7.click();
+	  elem8.click();
+	  robot.keyRelease(KeyEvent.VK_META);
+	  
+	  WebElement elem9 = Driver.getDriver().findElement(By.xpath("//select[@name='YearStart']//option[@value='1995']"));
+	  elem9.click();
+	  click(homePage.getGetTableButton());
+	  reportedCrimePage.handlepopUp();
+	  Assert.assertEquals(homePage.getCrimeYear(), "1995");
+	  Assert.assertTrue(homePage.comparePopulation());
+
+  }
+  //@Test
+  public void test_109() {
+	  getDriver().get(Config.getProperty("url109"));
+	  reportedCrimePage.handlepopUp();	
+	  Assert.assertEquals(homePage.gethomePageHeader().getText(), "Welcome to a new way to access UCR statistics");
+	  Assert.assertTrue(homePage.getBuildingToolLink().isDisplayed(), "Go to the table-building tool is not displayed");
+	  click(homePage.getBuildingToolLink());
+	  reportedCrimePage.handlepopUp();
+	  Assert.assertTrue(reportedCrimePage.getReportedCrimePageHeader().isDisplayed(), "Go to the table-building tool is not displayed");
+	  Assert.assertTrue(homePage.areReportLinksDisplayed(), "Not all report link are displayed on HomePage");
+	  click(homePage.getAllStatesLink());
+	  reportedCrimePage.handlepopUp();	  
+	  Assert.assertTrue(PageActions.IsElementPresent((homePage.getStateByStateLink())), "State by state and national estimates table is not dsplayed");
+	  Assert.assertTrue(PageActions.IsElementPresent((homePage.getDataVariableLink())),"Data with one variable table is not dsplayed");
+	  Assert.assertTrue(PageActions.IsElementPresent((homePage.getOneYearDataLink())), "One year of data table is not dsplayed");
+	  click(homePage.getDataVariableLink());
+	  reportedCrimePage.handlepopUp();
+	  click(homePage.getGetTableButton());
+  }
+  
+  
+
 
 }

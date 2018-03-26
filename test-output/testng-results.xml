@@ -2,20 +2,20 @@
 <testng-results skipped="0" failed="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="66165" started-at="2018-03-25T20:36:26Z" finished-at="2018-03-25T20:37:33Z">
+  <suite name="Default suite" duration-ms="88798" started-at="2018-03-26T21:39:45Z" finished-at="2018-03-26T21:41:14Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="66165" started-at="2018-03-25T20:36:26Z" finished-at="2018-03-25T20:37:33Z">
+    <test name="Default test" duration-ms="88798" started-at="2018-03-26T21:39:45Z" finished-at="2018-03-26T21:41:14Z">
       <class name="com.usrdatatool.tests.TestRunner">
-        <test-method status="PASS" signature="setUP()[pri:0, instance:com.usrdatatool.tests.TestRunner@62ee68d8]" name="setUP" is-config="true" duration-ms="4007" started-at="2018-03-25T15:36:26Z" finished-at="2018-03-25T15:36:30Z">
+        <test-method status="PASS" signature="setUP()[pri:0, instance:com.usrdatatool.tests.TestRunner@62ee68d8]" name="setUP" is-config="true" duration-ms="3994" started-at="2018-03-26T16:39:45Z" finished-at="2018-03-26T16:39:49Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUP -->
-        <test-method status="PASS" signature="test_TC110()[pri:0, instance:com.usrdatatool.tests.TestRunner@62ee68d8]" name="test_TC110" duration-ms="52144" started-at="2018-03-25T15:36:30Z" finished-at="2018-03-25T15:37:23Z">
+        <test-method status="PASS" signature="test_TC112()[pri:0, instance:com.usrdatatool.tests.TestRunner@62ee68d8]" name="test_TC112" duration-ms="74018" started-at="2018-03-26T16:39:49Z" finished-at="2018-03-26T16:41:03Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- test_TC110 -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.usrdatatool.tests.TestRunner@62ee68d8]" name="tearDown" is-config="true" duration-ms="10004" started-at="2018-03-25T15:37:23Z" finished-at="2018-03-25T15:37:33Z">
+        </test-method> <!-- test_TC112 -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.usrdatatool.tests.TestRunner@62ee68d8]" name="tearDown" is-config="true" duration-ms="10770" started-at="2018-03-26T16:41:03Z" finished-at="2018-03-26T16:41:14Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
