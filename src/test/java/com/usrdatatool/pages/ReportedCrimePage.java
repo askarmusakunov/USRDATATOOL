@@ -23,6 +23,22 @@ public class ReportedCrimePage {
 		@FindBy (xpath="//a[contains(.,'thanks')]")
 		WebElement popUpDecline;
 		
+		@FindBy (xpath="//a[@title='Single agency trends tables']")
+		WebElement singleAgencyReportedCrime;
+		
+		@FindBy (xpath=" //a[@href='/Search/Crime/Local/TrendsInOneVarLarge.cfm']")
+		WebElement oneVariableofData;
+		
+		
+		
+		public WebElement getOneVariableofData() {
+			return oneVariableofData;
+		}
+
+		public WebElement getSingleAgencyReportedCrime() {
+			return singleAgencyReportedCrime;
+		}
+
 		
 		public WebElement getPopUpDecline() {
 			return popUpDecline;

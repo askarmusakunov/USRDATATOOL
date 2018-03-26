@@ -32,11 +32,11 @@ public class HomePage {
 	
 	@FindBy(name="YearStart")
 	WebElement yearStart;
-	Select startYearSelectBox;
+	public Select startYearSelectBox;
 	
 	@FindBy(name="YearEnd")
 	WebElement yearEnd;
-	Select endYearSelectBox;
+	public Select endYearSelectBox;
 	
 	@FindBy(name="NextPage")
 	WebElement getTableButton;
@@ -104,6 +104,9 @@ public class HomePage {
 	WebElement homePageHeader;
 	
 	
+	public WebElement getResetButton() {
+		return resetButton;
+	}
 	
 	public WebElement getLargerAgenciesLink() {
 		return largerAgenciesLink;
@@ -300,6 +303,19 @@ public class HomePage {
 		return  strList;
 	}
 	
+	
+	public List<String> convertCrimeTypeWebElementsToString(){
+		List<WebElement>selectedOptions=crimeTypeSelectBox.getAllSelectedOptions();
+		List<String>strList=new ArrayList<>();
+		for (WebElement wl: selectedOptions) {
+			strList.add(wl.getText());
+		}
+		return strList;
+	}
 
+	
+
+	
+	 
 
 }
