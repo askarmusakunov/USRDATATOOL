@@ -156,6 +156,9 @@ public class HomePage {
 		return burgarlyColumnLabel;
 	}
 	
+	@FindBy(xpath="//caption[contains(text(),'Crime in')]")
+	WebElement crimeYear;
+	
 	public List<String> getStateNameTexts(){
 		
 		List<WebElement> statesElement = Driver.getDriver().findElements(By.xpath("//caption[contains(text(),'Estimated crime')]"));
@@ -300,6 +303,30 @@ public class HomePage {
 		return  strList;
 	}
 	
+	public String getCrimeYear() {
+		String str = crimeYear.getText().substring(9);
+		return str;
+	}
 
-
+	public List<Integer> numberofPopulationCoverage(){
+		List<WebElement> numberofPopulation = Driver.getDriver().findElements(By.xpath("//div//table//tbody//tr//td[4]"));
+		List<Integer>popList=new ArrayList<>();
+		for (WebElement wl: numberofPopulation) {
+			String str=(wl.getText().replaceAll(",","").trim());
+			int a=Integer.parseInt(str);
+			popList.add(a);			
+		}
+		return popList;
+	}
+	
+	public boolean comparePopulation() {
+		int a = 500000;
+		for(int i =0; i < numberofPopulationCoverage().size(); i++) {
+			if(!(numberofPopulationCoverage().get(i)<a)) {
+				return false;
+			}
+			
+		}
+		return true;
+	}
 }

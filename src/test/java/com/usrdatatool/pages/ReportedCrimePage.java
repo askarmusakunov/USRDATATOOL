@@ -38,7 +38,7 @@ public class ReportedCrimePage {
 		
 		public void handlepopUp(){
 		try {		  
-			  getPopUpDecline().click();
+			popUpDecline.click();
 		  }catch(Exception e)  {
 			  e.printStackTrace();
 		  }
