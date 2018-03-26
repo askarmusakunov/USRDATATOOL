@@ -121,9 +121,9 @@ public class TestRunner extends TestBase {
 	  
   }
   
-  //@Test
+  @Test
   public void test_108() {
-	  getDriver().get(Config.getProperty("oneYearDataLocal"));
+	  getDriver().get(Config.getProperty("oneYearDataLocalURL"));
 	  Assert.assertEquals(getDriver().getTitle(), "Uniform Crime Reporting Statistics");
 	  reportedCrimePage.handlepopUp(); //hadle popUp from ReportedCrimePage
 	  homePage.selectStateOrStatesByIndex(32);
@@ -141,7 +141,7 @@ public class TestRunner extends TestBase {
 	  robot.keyRelease(KeyEvent.VK_META);
 	  
 	  
-	  click(homePage.getGetTableButton());
+	  click(homePage.getGetTableButton()); 
 	  reportedCrimePage.handlepopUp();
 	  WebElement elem4 = Driver.getDriver().findElement(By.xpath("//select[@name='CrimeCrossId']//option[@value='13307']"));
 	  WebElement elem5 = Driver.getDriver().findElement(By.xpath("//select[@name='CrimeCrossId']//option[@value='13987']"));
