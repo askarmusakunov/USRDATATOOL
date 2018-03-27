@@ -32,14 +32,17 @@ public class HomePage {
 	
 	@FindBy(name="YearStart")
 	WebElement yearStart;
-	Select startYearSelectBox;
+	public Select startYearSelectBox;
 	
 	@FindBy(name="YearEnd")
 	WebElement yearEnd;
-	Select endYearSelectBox;
+	public Select endYearSelectBox;
 	
 	@FindBy(name="NextPage")
 	WebElement getTableButton;
+	
+	@FindBy(xpath="//caption[contains(text(),'Crime in')]")
+	WebElement crimeYear;
 	
 	@FindBy(name="Cancel")
 	WebElement resetButton;
@@ -104,6 +107,9 @@ public class HomePage {
 	WebElement homePageHeader;
 	
 	
+	public WebElement getResetButton() {
+		return resetButton;
+	}
 	
 	public WebElement getLargerAgenciesLink() {
 		return largerAgenciesLink;
@@ -155,9 +161,6 @@ public class HomePage {
 	public WebElement getBulgarlyColumnLabel() {
 		return burgarlyColumnLabel;
 	}
-	
-	@FindBy(xpath="//caption[contains(text(),'Crime in')]")
-	WebElement crimeYear;
 	
 	public List<String> getStateNameTexts(){
 		
@@ -303,9 +306,21 @@ public class HomePage {
 		return  strList;
 	}
 	
+
+	
+	public List<String> convertCrimeTypeWebElementsToString(){
+		List<WebElement>selectedOptions=crimeTypeSelectBox.getAllSelectedOptions();
+		List<String>strList=new ArrayList<>();
+		for (WebElement wl: selectedOptions) {
+			strList.add(wl.getText());
+		}
+		return strList;
+	}
+
 	public String getCrimeYear() {
 		String str = crimeYear.getText().substring(9);
 		return str;
+
 	}
 
 	public List<Integer> numberofPopulationCoverage(){
@@ -329,4 +344,5 @@ public class HomePage {
 		}
 		return true;
 	}
+
 }

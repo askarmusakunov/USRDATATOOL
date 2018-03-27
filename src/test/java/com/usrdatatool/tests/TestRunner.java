@@ -12,7 +12,6 @@ import java.awt.event.KeyEvent;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -27,86 +26,180 @@ import com.usrdatatool.utilities.TestBase;
 
 public class TestRunner extends TestBase {
 
-  //@Test
-  public void test1() {
-	  getDriver().get(Config.getProperty("baseUrl"));
-	  homePage.selectStateOrStatesByIndex(6);
-	  homePage.selectOneOrMoreVariableGroupsByIndex(1);
-	  homePage.selectStartYear("2013");
-	  homePage.selectEndYear("2014");
-	  click(homePage.getGetTableButton());
-	  Assert.assertEquals("Colorado", homePage.getStateFromEstimatedCrimeLabelText());
-	  Assert.assertEquals("bulgarly coloumn is not present",IsElementPresent(homePage.getBulgarlyColumnLabel()));
-	  Assert.assertEquals("larceny coloumn is not present",IsElementPresent(homePage.getLarcenyColumnLabel()));
-	  Assert.assertEquals("motor vehicle coloumn is not present",IsElementPresent(homePage.getMvtTherfColumnLabel()));
-  }
-  
-  
- // @Test
-  public void test2() {
-	  getDriver().get(Config.getProperty("baseUrl"));
-	  homePage.selectStateOrStatesByIndex(6,1,15,20,44);
-	  homePage.selectOneOrMoreVariableGroupsByIndex(1);
-	  homePage.selectStartYear("2009");
-	  homePage.selectEndYear("2014");
-	  
-	  if(isAlertPresent()) {
-		  Alert alert = getDriver().switchTo().alert();
-		  alert.dismiss();
-	  }
-	  
-	  click(homePage.getGetTableButton());
-	  Assert.assertEquals("Alabama", homePage.getStateNameTexts().get(0));
-	  Assert.assertEquals("Colorado", homePage.getStateNameTexts().get(1));
-	  Assert.assertEquals("Indiana", homePage.getStateNameTexts().get(2));
-	  Assert.assertEquals("Maine", homePage.getStateNameTexts().get(3));
-	  Assert.assertEquals("Texas", homePage.getStateNameTexts().get(4));
-  }
-  
-  
- // @Test
-  public void test3() {
-	  getDriver().get(Config.getProperty("baseUrl"));
-	  if(isAlertPresent()) {
-		  Alert alert = getDriver().switchTo().alert();
-		  alert.dismiss();
-	  }
-	  homePage.selectAllStates();
-	  int i = homePage.statesSelectBox.getAllSelectedOptions().size();
-	  homePage.statesSelectBox.deselectByIndex(0);
+	// @Test
+	public void test1() {
+		getDriver().get(Config.getProperty("baseUrl"));
+		homePage.selectStateOrStatesByIndex(6);
+		homePage.selectOneOrMoreVariableGroupsByIndex(1);
+		homePage.selectStartYear("2013");
+		homePage.selectEndYear("2014");
+		click(homePage.getGetTableButton());
+		Assert.assertEquals("Colorado", homePage.getStateFromEstimatedCrimeLabelText());
+		Assert.assertEquals("bulgarly coloumn is not present", IsElementPresent(homePage.getBulgarlyColumnLabel()));
+		Assert.assertEquals("larceny coloumn is not present", IsElementPresent(homePage.getLarcenyColumnLabel()));
+		Assert.assertEquals("motor vehicle coloumn is not present",
+				IsElementPresent(homePage.getMvtTherfColumnLabel()));
+	}
 
-	  boolean sorted = Ordering.natural().isOrdered(homePage.convertWebElementsToString());
-	  Assert.assertEquals(52, i);
-	  Assert.assertTrue(sorted);
-	  
-  }
-  
- // @Test
-  public void test4() {
-	  getDriver().get(Config.getProperty("Url"));
-	  if(isAlertPresent()) {
-		  Alert alert = getDriver().switchTo().alert();
-		  alert.dismiss();
-	  }
-		  assertTrue(homePage.isLogoDisplayed(),"HomePage Logo is not displayed");
-		  System.out.println("aa");
-		  click(homePage.getBuildingToolLink());
-		  System.out.println("bb");
-          click(homePage.getAllStatesLink());
-		  Assert.assertEquals(getDriver().getCurrentUrl(),"https://www.ucrdatatool.gov/Search/Crime/State/StateCrime.cfm");
-          Assert.assertEquals(getDriver().getTitle(), "Uniform Crime Reporting Statistics");
-          click(homePage.oneYearDataLink());
-    	      System.out.println("One year of data");
-    	      Assert.assertEquals(getDriver().getCurrentUrl(),"https://www.ucrdatatool.gov/Search/Crime/State/OneYearofData.cfm");
-          Assert.assertEquals(getDriver().getTitle(),"Uniform Crime Reporting Statistics");
-    	      homePage.selectStateOrStatesByIndex(1,3);
-    	      homePage.selectOneOrMoreVariableGroupsByIndex(0,2);
-    	      homePage.selectStartYear(50);
-    	      click(homePage.getGetTableButton());
- 
+	// @Test
+	public void test2() {
+		getDriver().get(Config.getProperty("baseUrl"));
+		homePage.selectStateOrStatesByIndex(6, 1, 15, 20, 44);
+		homePage.selectOneOrMoreVariableGroupsByIndex(1);
+		homePage.selectStartYear("2009");
+		homePage.selectEndYear("2014");
+		click(homePage.getGetTableButton());
+		Assert.assertEquals("Alabama", homePage.getStateNameTexts().get(0));
+		Assert.assertEquals("Colorado", homePage.getStateNameTexts().get(1));
+		Assert.assertEquals("Indiana", homePage.getStateNameTexts().get(2));
+		Assert.assertEquals("Maine", homePage.getStateNameTexts().get(3));
+		Assert.assertEquals("Texas", homePage.getStateNameTexts().get(4));
+	}
 
-  }
-  
+	// @Test
+	public void test3() {
+		getDriver().get(Config.getProperty("baseUrl"));
+		if (isAlertPresent()) {
+			Alert alert = getDriver().switchTo().alert();
+			alert.dismiss();
+		}
+		homePage.selectAllStates();
+		int i = homePage.statesSelectBox.getAllSelectedOptions().size();
+		homePage.statesSelectBox.deselectByIndex(0);
+
+		boolean sorted = Ordering.natural().isOrdered(homePage.convertWebElementsToString());
+		Assert.assertEquals(52, i);
+		Assert.assertTrue(sorted);
+
+	}
+
+	// @Test
+	public void test4() {
+		getDriver().get(Config.getProperty("Url"));
+		if (isAlertPresent()) {
+			Alert alert = getDriver().switchTo().alert();
+			alert.dismiss();
+		}
+		assertTrue(homePage.isLogoDisplayed(), "HomePage Logo is not displayed");
+		System.out.println("aa");
+		click(homePage.getBuildingToolLink());
+		System.out.println("bb");
+		click(homePage.getAllStatesLink());
+		Assert.assertEquals(getDriver().getCurrentUrl(),
+				"https://www.ucrdatatool.gov/Search/Crime/State/StateCrime.cfm");
+		Assert.assertEquals(getDriver().getTitle(), "Uniform Crime Reporting Statistics");
+		click(homePage.oneYearDataLink());
+		System.out.println("One year of data");
+		Assert.assertEquals(getDriver().getCurrentUrl(),
+				"https://www.ucrdatatool.gov/Search/Crime/State/OneYearofData.cfm");
+		Assert.assertEquals(getDriver().getTitle(), "Uniform Crime Reporting Statistics");
+		homePage.selectStateOrStatesByIndex(1, 3);
+		homePage.selectOneOrMoreVariableGroupsByIndex(0, 2);
+		homePage.selectStartYear(50);
+		click(homePage.getGetTableButton());
+
+	}
+
+	// @Test
+	public void test_TC110() {
+		getDriver().get(Config.getProperty("Url"));
+		reportedCrimePage.handlepopUp();
+		Assert.assertEquals(homePage.gethomePageHeader().getText(), "Welcome to a new way to access UCR statistics");
+		Assert.assertTrue(homePage.getBuildingToolLink().isDisplayed(),
+				"Go to the table-building tool is not displayed");
+		click(homePage.getBuildingToolLink());
+		reportedCrimePage.handlepopUp();
+		Assert.assertTrue(reportedCrimePage.getReportedCrimePageHeader().isDisplayed(),
+				"Go to the table-building tool is not displayed");
+		Assert.assertTrue(homePage.areReportLinksDisplayed(), "Not all report link are displayed on HomePage");
+		click(homePage.getAllStatesLink());
+		reportedCrimePage.handlepopUp();
+		Assert.assertTrue(PageActions.IsElementPresent((homePage.getStateByStateLink())),
+				"State by state and national estimates table is not dsplayed");
+		Assert.assertTrue(PageActions.IsElementPresent((homePage.getDataVariableLink())),
+				"Data with one variable table is not dsplayed");
+		Assert.assertTrue(PageActions.IsElementPresent((homePage.getOneYearDataLink())),
+				"One year of data table is not dsplayed");
+		click(homePage.getDataVariableLink());
+		reportedCrimePage.handlepopUp();
+		Assert.assertTrue(PageActions.IsElementPresent((reportedCrimePage.getDataWithOneVariableHeader())),
+				"Data with One Variable is not displayed");
+		homePage.selectStateOrStatesByIndex(6);
+		homePage.selectOneOrMoreVariableGroupsByIndex(1);
+		homePage.selectStartYear("2013");
+		click(homePage.getGetTableButton());
+		// Step 5- Selecting year 2016 is not possible, because max year is 2014
+
+	}	
+
+
+	
+
+	//@Test
+	public void test_TC111() {
+		getDriver().get(Config.getProperty("Url"));
+		reportedCrimePage.handlepopUp();
+		Assert.assertEquals(homePage.gethomePageHeader().getText(), "Welcome to a new way to access UCR statistics");
+		Assert.assertTrue(homePage.getBuildingToolLink().isDisplayed(),
+				"Go to the table-building tool is not displayed");
+		click(homePage.getBuildingToolLink());
+		reportedCrimePage.handlepopUp();
+		Assert.assertTrue(reportedCrimePage.getReportedCrimePageHeader().isDisplayed(),
+				"Go to the table-building tool is not displayed");
+		Assert.assertTrue(homePage.areReportLinksDisplayed(), "Not all report link are displayed on HomePage");
+		click(homePage.getLargerAgenciesLink());
+		reportedCrimePage.handlepopUp();
+		Assert.assertTrue(PageActions.IsElementPresent((reportedCrimePage.getSingleAgencyReportedCrime())),
+				"Single agency reported crime table is not dsplayed");
+		Assert.assertTrue(PageActions.IsElementPresent((reportedCrimePage.getOneVariableofData())),
+				"One Variable of Data table is not dsplayed");
+		Assert.assertTrue(PageActions.IsElementPresent((homePage.getOneYearDataLink())),
+				"One year of data table is not dsplayed");
+		// Step 4 and Step 5 is not a part of the current page
+	}
+
+	//@Test
+	public void test_TC112() {
+		getDriver().get(Config.getProperty("Url"));
+		reportedCrimePage.handlepopUp();
+		Assert.assertEquals(homePage.gethomePageHeader().getText(), "Welcome to a new way to access UCR statistics");
+		Assert.assertTrue(homePage.getBuildingToolLink().isDisplayed(),
+				"Go to the table-building tool is not displayed");
+		click(homePage.getBuildingToolLink());
+		reportedCrimePage.handlepopUp();
+		Assert.assertTrue(reportedCrimePage.getReportedCrimePageHeader().isDisplayed(),
+				"Go to the table-building tool is not displayed");
+		Assert.assertTrue(homePage.areReportLinksDisplayed(), "Not all report link are displayed on HomePage");
+		click(homePage.getLargerAgenciesLink());
+		reportedCrimePage.handlepopUp();
+		Assert.assertTrue(PageActions.IsElementPresent((reportedCrimePage.getSingleAgencyReportedCrime())),
+				"Single agency reported crime table is not dsplayed");
+		Assert.assertTrue(PageActions.IsElementPresent((reportedCrimePage.getOneVariableofData())),
+				"One Variable of Data table is not dsplayed");
+		Assert.assertTrue(PageActions.IsElementPresent((homePage.getOneYearDataLink())),
+				"One year of data table is not dsplayed");
+		getDriver().navigate().back();
+		reportedCrimePage.handlepopUp();
+		click(homePage.getAllStatesLink());
+		reportedCrimePage.handlepopUp();
+		click(homePage.getStateByStateLink());
+		reportedCrimePage.handlepopUp();
+		homePage.selectStateOrStatesByIndex(5,10,14,15,16, 30);
+		homePage.selectOneOrMoreVariableGroupsByIndex(1,3);
+		homePage.selectStartYear("2010");
+		homePage.selectEndYear("2012");
+		//System.out.println(homePage.convertWebElementsToString());
+		//System.out.println(homePage.convertCrimeTypeWebElementsToString());
+		click(homePage.getResetButton());
+		Assert.assertTrue(homePage.convertWebElementsToString().isEmpty());
+		Assert.assertTrue(homePage.convertCrimeTypeWebElementsToString().isEmpty());
+		//System.out.println(homePage.startYearSelectBox.getFirstSelectedOption().getText());
+		Assert.assertEquals(homePage.startYearSelectBox.getFirstSelectedOption().getText().trim(), "1960");
+		Assert.assertEquals(homePage.endYearSelectBox.getFirstSelectedOption().getText().trim(), "2014");
+
+	}
+
+    
  // @Test
   public void test_107(){
 	  getDriver().get(Config.getProperty("oneYearDataLocal"));
@@ -167,7 +260,7 @@ public class TestRunner extends TestBase {
 	  Assert.assertTrue(homePage.comparePopulation());
 
   }
-  //@Test
+  @Test
   public void test_109() {
 	  getDriver().get(Config.getProperty("url109"));
 	  reportedCrimePage.handlepopUp();	
@@ -185,51 +278,10 @@ public class TestRunner extends TestBase {
 	  click(homePage.getDataVariableLink());
 	  reportedCrimePage.handlepopUp();
 	  click(homePage.getGetTableButton());
-  }
-  
-  
- // @Test
-  public void test_TC110(){
-	  getDriver().get(Config.getProperty("Url"));
-	  reportedCrimePage.handlepopUp();	  	  	  
-	  Assert.assertEquals(homePage.gethomePageHeader().getText(), "Welcome to a new way to access UCR statistics");
-	  Assert.assertTrue(homePage.getBuildingToolLink().isDisplayed(), "Go to the table-building tool is not displayed");
-	  click(homePage.getBuildingToolLink());
 	  reportedCrimePage.handlepopUp();
-	  Assert.assertTrue(reportedCrimePage.getReportedCrimePageHeader().isDisplayed(), "Go to the table-building tool is not displayed");
-	  Assert.assertTrue(homePage.areReportLinksDisplayed(), "Not all report link are displayed on HomePage");
-	  click(homePage.getAllStatesLink());
-	  reportedCrimePage.handlepopUp();	  
-	  Assert.assertTrue(PageActions.IsElementPresent((homePage.getStateByStateLink())), "State by state and national estimates table is not dsplayed");
-	  Assert.assertTrue(PageActions.IsElementPresent((homePage.getDataVariableLink())),"Data with one variable table is not dsplayed");
-	  Assert.assertTrue(PageActions.IsElementPresent((homePage.getOneYearDataLink())), "One year of data table is not dsplayed");
-	  click(homePage.getDataVariableLink());
-	  reportedCrimePage.handlepopUp(); 	  
-	  Assert.assertTrue(PageActions.IsElementPresent((reportedCrimePage.getDataWithOneVariableHeader())), "Data with One Variable is not displayed");
-	  //System.out.println(homePage.convertWebElementsToString());
-	  homePage.selectStateOrStatesByIndex(6);
-	  homePage.selectOneOrMoreVariableGroupsByIndex(1);
-	  homePage.selectStartYear("2013");		  
-	  //Assert.assertTrue(homePage.selectEndYear("2016"), "Year 2016 is not found" );
-	  click(homePage.getGetTableButton());
-	  
-	  
-  }
-  
- // @Test
-  public void test_TC111(){
-	  getDriver().get(Config.getProperty("Url"));  	  
-	  Assert.assertEquals(homePage.gethomePageHeader().getText(), "Welcome to a new way to access UCR statistics");
-	  Assert.assertTrue(homePage.getBuildingToolLink().isDisplayed(), "Go to the table-building tool is not displayed");
-	  click(homePage.getBuildingToolLink());
-	  Assert.assertTrue(reportedCrimePage.getReportedCrimePageHeader().isDisplayed(), "Go to the table-building tool is not displayed");
-	  Assert.assertTrue(homePage.areReportLinksDisplayed(), "Not all report link are displayed on HomePage");
-	  click(homePage.getLargerAgenciesLink());
-	  Assert.assertTrue(PageActions.IsElementPresent((homePage.getStateByStateLink())), "State by state and national estimates table is not dsplayed");
-	  Assert.assertTrue(PageActions.IsElementPresent((homePage.getDataVariableLink())),"Data with one variable table is not dsplayed");
-	  Assert.assertTrue(PageActions.IsElementPresent((homePage.getOneYearDataLink())), "One year of data table is not dsplayed");
   }
   
   
+
 
 }

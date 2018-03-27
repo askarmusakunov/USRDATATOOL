@@ -1,21 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" total="1" passed="1">
+<testng-results skipped="0" failed="0" total="2" passed="2">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="38422" started-at="2018-03-26T21:51:57Z" finished-at="2018-03-26T21:52:36Z">
+  <suite name="Default suite" duration-ms="141287" started-at="2018-03-26T23:38:24Z" finished-at="2018-03-26T23:40:46Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="38422" started-at="2018-03-26T21:51:57Z" finished-at="2018-03-26T21:52:36Z">
+    <test name="Default test" duration-ms="141287" started-at="2018-03-26T23:38:24Z" finished-at="2018-03-26T23:40:46Z">
       <class name="com.usrdatatool.tests.TestRunner">
-        <test-method status="PASS" signature="setUP()[pri:0, instance:com.usrdatatool.tests.TestRunner@4f933fd1]" name="setUP" is-config="true" duration-ms="2144" started-at="2018-03-26T16:51:57Z" finished-at="2018-03-26T16:52:00Z">
+        <test-method status="PASS" signature="setUP()[pri:0, instance:com.usrdatatool.tests.TestRunner@4f933fd1]" name="setUP" is-config="true" duration-ms="7786" started-at="2018-03-26T18:38:24Z" finished-at="2018-03-26T18:38:32Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUP -->
-        <test-method status="PASS" signature="test_108()[pri:0, instance:com.usrdatatool.tests.TestRunner@4f933fd1]" name="test_108" duration-ms="26169" started-at="2018-03-26T16:52:00Z" finished-at="2018-03-26T16:52:26Z">
+        <test-method status="PASS" signature="test_108()[pri:0, instance:com.usrdatatool.tests.TestRunner@4f933fd1]" name="test_108" duration-ms="45954" started-at="2018-03-26T18:38:32Z" finished-at="2018-03-26T18:39:18Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- test_108 -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.usrdatatool.tests.TestRunner@4f933fd1]" name="tearDown" is-config="true" duration-ms="10099" started-at="2018-03-26T16:52:26Z" finished-at="2018-03-26T16:52:36Z">
+        <test-method status="PASS" signature="test_109()[pri:0, instance:com.usrdatatool.tests.TestRunner@4f933fd1]" name="test_109" duration-ms="77441" started-at="2018-03-26T18:39:18Z" finished-at="2018-03-26T18:40:36Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test_109 -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.usrdatatool.tests.TestRunner@4f933fd1]" name="tearDown" is-config="true" duration-ms="10096" started-at="2018-03-26T18:40:36Z" finished-at="2018-03-26T18:40:46Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
