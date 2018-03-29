@@ -16,6 +16,7 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+
 import com.google.common.collect.Ordering;
 import com.usrdatatool.utilities.Config;
 import com.usrdatatool.utilities.Driver;
@@ -279,6 +280,8 @@ public class TestRunner extends TestBase {
 	  reportedCrimePage.handlepopUp();
 	  click(homePage.getGetTableButton());
 	  reportedCrimePage.handlepopUp();
+	  
+	 
   }
   
   
